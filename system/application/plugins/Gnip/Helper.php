@@ -135,6 +135,35 @@ class Services_Gnip_Helper {
     }
 
     /**
+     * Sends the time difference between Gnip and 
+     * This method gets the current time from the Gnip server,
+     * gets the current local time and determines the difference
+     * between the two. It returns the difference for you. This method
+     * allows you to calculate the offset once rather than continually
+     * requesting for it.
+     *
+     * @return long containing the corrected time
+     */
+    function getGnipClockOffset() {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $this->base_url);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+        curl_setopt($curl, CURLOPT_NOBODY, 1);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        $response = curl_exec($curl);
+
+        $localTime = time();
+        curl_close($curl);
+        preg_match('/.{3}, \\d{2} .{3} \d{4} \d{2}:\d{2}:\d{2} GMT/', $response, $match);
+        $gnipTime = strtotime($match[0]);
+        return $gnipTime - $localTime;
+    }
+
+
+
+    /**
      * Converts the time passed in to a string of the
      * form YYYYMMDDHHMM which corresponds to the bucket name.
      *
@@ -151,10 +180,10 @@ class Services_Gnip_Helper {
      * 
      * @param string $url
      * @param array $curl_options
-     * @param boolean $isGzipEncoded default is false
+     * @param boolean $isGzipEncoded default is true
      * @return string response
      */
-    function doRequest($url, $curl_options = array(), $isGzipEncoded = false) {
+    function doRequest($url, $curl_options = array(), $isGzipEncoded = true) {
         $curl = curl_init();
 
         $loginInfo = sprintf("%s:%s",$this->username,$this->password);

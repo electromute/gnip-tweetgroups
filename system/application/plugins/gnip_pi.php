@@ -12,6 +12,7 @@ require_once 'Gnip/Place.php';
 
 
 class Services_Gnip {
+
     static public $uri = "https://demo-v21.gnip.com";
     public $helper;
     public $debug;
@@ -388,6 +389,19 @@ class Services_Gnip {
             $message = "There was a problem when calling addBatchRules on publisher $publisherName with filter $filterName. Status message: ";
             $this->_handleDebug($message, $this->debug, $e);
         }
+    }
+
+
+    /**
+     * Gives you the server clock offset so you can better calculate
+     * bucket times. The number you get back from this function should 
+     * then be added to your time to get the correct time with offset
+     * included.
+     * 
+     * @return long difference
+     */
+    function getGnipClockOffset(){
+        return $this->helper->getGnipClockOffset();
     }
 
 
