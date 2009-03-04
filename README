@@ -7,6 +7,8 @@ for https://demo-v21.gnip.com, which will change when the API Schema
 version 2.1 is launched. When this happens, the URL can be updated in 
 the Gnip plugin.]
 
+A live demo of this app can be found at http://groupsdemo.gnip.com/
+
 == Overview ==
 
 This is a sample application that illustrates some of the ways Gnip can 
