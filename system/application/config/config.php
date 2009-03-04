@@ -14,8 +14,8 @@
 |
 */
 switch($_SERVER['SERVER_NAME']) {
-    case "gnip-boulder":
-        $config['base_url']	= "http://gnip-boulder/";
+    case "localhost":
+        $config['base_url']	= "http://localhost/";
         $config['log_threshold'] = 4;
     break;
     case "groupsdemo.gnip.com":
