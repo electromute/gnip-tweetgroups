@@ -1,0 +1,50 @@
+<activities publisher="gnipherald">
+ <activity>
+    <at>2009-01-14T04:45:03.000-07:00</at>
+    <action>post</action>
+    <activityID>696612377466</activityID>
+    <URL>http://gnipherald.com/stories/0.696612377466/jousting-gone-bad.xml</URL>
+    <source>Vignette-Web-Publisher</source>
+    <keyword>news</keyword>
+    <keyword>report</keyword>
+        <place>
+        <point>38.2638886 -106.126131</point>
+        <featurename>Chloride Mine</featurename>
+    </place>
+    <actor uid="12339948@4994" metaURL="http://gnipherald.com/profiles/jvaleski">jvaleski</actor>
+    <destinationURL>http://gnipherald.com/stories/696612377466/jousting-gone-bad.html</destinationURL>
+    <tag metaURL="http://gnipherald/about/tag/armor">armor</tag>
+    <tag metaURL="http://gnipherald/about/tag/staff">staff</tag>
+    <tag metaURL="http://gnipherald/about/tag/injury">injury</tag>
+    <to metaURL="http://gnipherald.com/profiles/barinek">barinek</to>
+    <regardingURL metaURL="http://apnewswire.com/jousting">http://apnewswire.com/jousting/accident.html</regardingURL>
+    <payload>
+        <title>Jousting Event Went Awry</title>
+        <body>junk</body>
+        <mediaURL height="200" width="200" duration="107" mimeType="movie/quicktime" type="video">
+            http://images.gnipherald.com/jousting-thumbnail.jpg
+        </mediaURL>
+        <raw>H4sIAAAAAAAAAEtKLE41M1FIzUvOT0lNUUivyixQSM7PLShKLS4G8pMy8xKLKgH+oX86JQAAAA==</raw>
+    </payload>
+  </activity>
+</activities>
+
+
+<activities publisher="gnipherald">
+<activity>
+<at>2009-01-30T23:13:01.000Z</at>
+<action>post</action>
+<activityID>0.673528343124</activityID>
+<URL>http://gnipherald.com/stories/0.673528343124/jousting-gone-bad.xml</URL>
+<source>Vignette-Web-Publisher</source><place><point>38.2638886 -106.126131</point>
+<featurename>Chloride Mine</featurename>
+</place>
+<actor uid="12339948@4994" metaURL="http://gnipherald.com/profiles/jvaleski">jvaleski</actor>
+<destinationURL>http://gnipherald.com/stories/0.673528343124/jousting-gone-bad.html</destinationURL>
+<tag metaURL="http://gnipherald/about/tag/armor">armor</tag>
+<tag metaURL="http://gnipherald/about/tag/staff">staff</tag>
+<tag metaURL="http://gnipherald/about/tag/injury">injury</tag>
+        <to metaURL="http://gnipherald.com/profiles/barinek">barinek</to>
+        <regardingURL metaURL="http://apnewswire.com/jousting">http://apnewswire.com/jousting/accident.html</regardingURL>
+    </activity>
+</activities>

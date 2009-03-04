@@ -1,0 +1,209 @@
+body {
+     padding: 0;
+     margin: 0;
+     font-size: 12px;
+     font-family: Verdana, Arial, sans-serif;
+     color: #262222;
+     background-color:#FCF4DC;
+     text-align: center;
+}
+
+img {border:0;}
+
+h1{
+    color: #2B1313;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+h2 {
+    color: #2B1313;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+h3 {
+    color: #262222 ;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+a:link, a:visited, a:active {
+    color: #78992F;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+#page {
+    left: 0;
+    margin: 0 auto;
+    text-align:left;
+    background-color: #FCF4DC;
+}
+
+#header {
+    position:relative;
+    top: 10px;
+    width:100%;
+    background-color: #FCF4DC;
+    padding-bottom: 7px;
+}
+
+#header .headerImage{
+    position: relative;
+    left: 75px;
+    padding-bottom:20px;
+}
+
+#content-container {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 100%;
+    position:relative;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+
+#content-copy {
+    position:relative;
+    background-color:#ffffff;   
+    width:850px;
+    left:60px;
+    margin-left:15px;
+}
+
+#content-copy .homeIntroText {
+    float:left;
+}
+
+#footer-container {
+    clear: both;
+    text-align: left;
+    background-color: #2B1313;
+    width:100%;
+ }
+
+#footer {
+    position: relative;
+    top: 10px;
+    padding-top:20px;
+    padding-bottom:15px;
+    background-color:#fff; 
+}
+
+.footer_text {
+    clear:left;
+    color:#262222;
+    font-size:9px;
+}
+
+#footer a {
+    color: #78992F;
+    font-size: 12px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.footerText {
+    position:relative;
+    left:115px;
+}
+
+.copyright_text {
+    color:#262222;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.smallUserImage{
+    padding-right: 5px;
+}
+
+/* form styles */
+input[type="text"], input[type="password"]{
+    border: 1px solid #78992F;
+    width: 200px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #2B1313;
+    font-size:16px;
+    margin: 5px 0 0 0;
+}
+
+input[type="radio"] {
+    height:15px;
+    margin:0 3px 0 0;
+    padding:0;
+    width:15px;
+}
+
+select {
+    font-family: Verdana, Arial, sans-serif;
+    color: #5b6e7d;
+    font-size:16px;
+    border: 1px solid #5b6e7d;
+}
+
+.formCentered {
+    font-size: 16px;
+}
+
+.formCentered label {
+    display:block;
+    color:#2B1313;
+    float:left;
+    margin-left:20px;
+    margin-right:30px;
+    margin-top:7px;
+    text-align:right;
+    width:170px;
+}
+
+.signupSubmit {
+    color:#2B1313;
+    position: relative;
+    left: 385px;
+}   
+
+.formCentered .error {
+    color:#622d2d;
+    font-size:12px;
+}
+
+.tags {
+    color: #ec3d00; 
+}
+
+#refresh {
+   width: 100%;
+   padding-bottom:15px;
+   font-weight: bold;
+   font-size:14px;
+}
+
+#left {
+    float: left;
+    width: 580px;
+}
+
+#right {
+    float: right;
+    width: 260px;
+}
+
+#pager {
+    display: block;
+}
+
+#pager .previous {
+    float: left;
+}
+
+#pager .next {
+    float: right;
+}
+.error{ color:#f00; padding-bottom:10px;}

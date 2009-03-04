@@ -1,0 +1,86 @@
+Welcome to the Gnip Group Tweets Sample App!
+
+== VERSION ==
+This application complies with API version 2.1 (demo)
+[Please note that the URL to point to Gnip in this version is
+for https://demo-v21.gnip.com, which will change when the API Schema
+version 2.1 is launched. When this happens, the URL can be updated in 
+the Gnip plugin.]
+
+== Overview ==
+
+This is a sample application that illustrates some of the ways Gnip can 
+be used, in this case, to aggregate a group of Twitter users on a web page.
+
+The web application uses the CodeIgniter framework so having some knowledge of
+how this works is helpful.
+
+== Dependencies == 
+
+= Required Dependencies =
+  - php5 with SimpleXML (included by default in PHP5, unless disabled)
+  - A user account on Gnip https://demo-v21.gnip.com/
+  - A webserver set up to deploy the application
+  - MySQL database
+
+Resource links for the above dependencies can be found here:
+  http://www.php.net/manual/en/book.simplexml.php
+  http://codeigniter.com/
+  http://jquery.com/
+  http://www.mysql.com/
+  
+== Instructions ==
+
+You must update the following CodeIgniter core files:
+system/config/config.php
+system/config/database.php
+
+The database structure is included in
+/scripts/database.sql
+
+This script can be run in order to generate the database structure.
+  
+== Discussion ==
+
+The interface allows users to input Twitter usernames. If the username is 
+valid (and their tweets are public), they'll be added to the filter you've created 
+on Gnip (https://demo-v21.gnip.com). 
+
+Tweets from these users will then be posted to this application using the POST url 
+configured at http://yourhost.com/request (which you must also configure when you 
+create your filter on Gnip).
+
+There is an administrative console that allows you to set users as moderators. These 
+moderators can toggle existing users between active/inactive. Inactive users' tweets 
+will still show, but they will be removed from the filter, so no future tweets will 
+arrive from them.
+
+Moderators can also promote/revoke moderator privileges to other users. An activation 
+key is generated when a moderator is promoted. No auto emailing functionality is 
+built in, so you'll have to send them their activation code and sign-up URL. They 
+must sign up with their Twitter username but can use whatever password they wish.
+
+In order to use the moderator console, the easiest thing to do is add yourself as a
+regular user. Then, fire up your favorite MySQL GUI and:
+
+1. Add your twitter username and a fake activation code to the admin table (no password)
+2. Update your record in the actorRules table, set admin = 1.
+
+Here's the sql to do the above (be sure to put your own Twitter username in there):
+
+insert into `admin` (username, activationcode) values('twitter-username', '12345');
+update `actorRules` set `admin` = 1 where `username` = 'twitter-username';
+
+Make a note of the activation code and point your browser to:
+http://yourhost.com/admin/signup
+
+This sample application uses the CodeIgniter PHP framework with jQuery 1.3.2.
+
+Data is POSTed to an endpoint in this application and processed for later use. The 
+POST url will be http://yourhost.com/request
+
+This sample is intended for educational purposes only, meaning use it to help you 
+learn a few things but don't expect it to be perfect in every way. Feel free to take it 
+and modify it for your purposes. Also, this application utilizes Twitter's full 
+data feeds, which are not available to most of our users. There is a note in
+/system/application/controllers/request/home.php on how to modify the application thusly.

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Root element of representations a set of activities. -->
+    <xs:element name="activities">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="activity" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="publisher" type="uriSafeType" use="optional"/>
+
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Root element of representations of a single filter. -->
+    <xs:element name="filter">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="postURL" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="rule" type="rule" maxOccurs="unbounded" minOccurs="1"/>
+
+            </xs:sequence>
+            <xs:attribute name="name" type="uriSafeType" use="required"/>
+            <xs:attribute name="fullData" type="xs:boolean" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Root element of representations of a set of publishers. -->
+    <xs:element name="publishers">
+        <xs:complexType>
+
+            <xs:sequence>
+                <xs:element ref="publisher" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Root element of representations of a set of filters. -->
+    <xs:element name="filters">
+        <xs:complexType>
+
+            <xs:sequence>
+                <xs:element ref="filter" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Root element of representations of a set of rules. -->
+    <xs:element name="rules">
+        <xs:complexType>
+
+            <xs:sequence>
+                <xs:element name="rule" type="rule" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    Root element of Error responses from Gnip.  A human readable
+    description of the problem will be in the text node contained by
+    this element
+    -->
+    <xs:element name="error" type="xs:string"/>
+
+    <!--
+    Root element of Result responses from Gnip.  A human readable
+    description of the result will be in the text node contained by
+    this element
+    -->
+
+    <xs:element name="result" type="xs:string"/>
+
+    <!-- Root element of activityStream representations -->
+    <xs:element name="activityStream">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="activitiesAddedAt" type="optionalTimeStampType"/>
+                <xs:element name="buckets">
+                    <xs:complexType>
+
+                        <xs:sequence>
+                            <xs:element name="bucket" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="href" type="xs:anyURI"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="optionalTimeStampType">
+        <xs:union memberTypes="xs:dateTime">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="0"/>
+
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:element name="activity">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="at" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+
+                <xs:element name="action" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="activityID" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="URL" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="keyword" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="place" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="point" type="pointType" minOccurs="0" maxOccurs="1"/>
+
+                            <xs:element name="elev" type="xs:double" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="floor" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="featuretypetag" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="featurename" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="relationshiptag" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="actor" minOccurs="0" maxOccurs="unbounded">
+
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="metaURL" use="optional" type="xs:anyURI"/>
+                                <xs:attribute name="uid" use="optional" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="destinationURL" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:anyURI">
+                                <xs:attribute name="metaURL" use="optional" type="xs:anyURI"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="metaURL" use="optional" type="xs:anyURI"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="to" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="metaURL" use="optional" type="xs:anyURI"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="regardingURL" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:anyURI">
+                                <xs:attribute name="metaURL" use="optional" type="xs:anyURI"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="payload" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="body" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="mediaURL" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:anyURI">
+
+                                            <xs:attribute name="height" use="optional" type="xs:string"/>
+                                            <xs:attribute name="width" use="optional" type="xs:string"/>
+                                            <xs:attribute name="duration" use="optional" type="xs:string"/>
+                                            <xs:attribute name="mimeType" use="optional" type="xs:string"/>
+                                            <xs:attribute name="type" use="optional" type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="raw" type="xs:base64Binary" minOccurs="1" maxOccurs="1"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="publisher">
+
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="supportedRuleTypes" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="type" type="ruleType" minOccurs="1" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+            </xs:sequence>
+            <xs:attribute name="name" type="uriSafeType" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="rule" type="rule"/>
+
+    <xs:complexType name="rule">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+
+                <xs:attribute name="type" use="required" type="ruleType"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="uriSafeType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-z0-9.+\-]+"/>
+        </xs:restriction>
+
+    </xs:simpleType>
+
+    <xs:simpleType name="ruleType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="actor"/>
+            <xs:enumeration value="tag"/>
+            <xs:enumeration value="to"/>
+            <xs:enumeration value="regarding"/>
+            <xs:enumeration value="source"/>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="pointType">
+        <xs:list itemType="xs:double"/>
+    </xs:simpleType>
+
+</xs:schema>
