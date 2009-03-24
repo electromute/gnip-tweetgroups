@@ -189,8 +189,10 @@ class Services_Gnip_Helper {
         $loginInfo = sprintf("%s:%s",$this->username,$this->password);
         $headers = array("Content-Type: application/xml", "User-Agent: Gnip-Client-PHP/2.1",
                          "Authorization: Basic ".base64_encode($loginInfo));
-        if($isGzipEncoded)
+        if($isGzipEncoded){
             $headers[] = 'Content-Encoding: gzip';
+            curl_setopt($curl, CURLOPT_ENCODING, 'gzip,deflate');
+        }
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);

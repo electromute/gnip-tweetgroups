@@ -43,6 +43,7 @@
 $route['default_controller'] = "home";
 $route['scaffolding_trigger'] = "scaffolding";
 $route['add'] =  "home/add";
+$route['about'] =  "home/about";
 
 
 /* End of file routes.php */

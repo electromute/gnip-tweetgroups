@@ -1,11 +1,7 @@
 Welcome to the Gnip Group Tweets Sample App!
 
 == VERSION ==
-This application complies with API version 2.1 (demo)
-[Please note that the URL to point to Gnip in this version is
-for https://demo-v21.gnip.com, which will change when the API Schema
-version 2.1 is launched. When this happens, the URL can be updated in 
-the Gnip plugin.]
+This application complies with API version 2.1
 
 A live demo of this app can be found at http://groupsdemo.gnip.com/
 
@@ -21,7 +17,7 @@ how this works is helpful.
 
 = Required Dependencies =
   - php5 with SimpleXML (included by default in PHP5, unless disabled)
-  - A user account on Gnip https://demo-v21.gnip.com/
+  - A user account on Gnip https://api-v21.gnip.com/
   - A webserver set up to deploy the application
   - MySQL database
 
@@ -46,7 +42,7 @@ This script can be run in order to generate the database structure.
 
 The interface allows users to input Twitter usernames. If the username is 
 valid (and their tweets are public), they'll be added to the filter you've created 
-on Gnip (https://demo-v21.gnip.com). 
+on Gnip (https://api-v21.gnip.com). 
 
 Tweets from these users will then be posted to this application using the POST url 
 configured at http://yourhost.com/request (which you must also configure when you 

@@ -99,6 +99,14 @@ class Home extends Controller {
         }
         $this->load->view('layouts/footer');
     }
+    
+    function about(){
+       
+       $header['title'] = "Welcome to Boulder/Denver Tweets, Twitter data from Boulder and Denver, Colorado";
+       $this->load->view('layouts/header', $header); 
+       $this->load->view('about');
+       $this->load->view('layouts/footer');
+    }
 
 
     /*
