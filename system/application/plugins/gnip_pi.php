@@ -71,7 +71,7 @@ class Services_Gnip {
      * 
      * @param string $publisherName name of an existing publisher
      * @param string $scope publisher scope (my or gnip) default is gnip
-     * @return array containing publisher object
+     * @return object $publisher Services_Gnip_Publisher
      */
     function getPublisher($publisherName, $scope="gnip") {
         $scope = $this->_scopeprep($scope);

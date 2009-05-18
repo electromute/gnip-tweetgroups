@@ -10,13 +10,20 @@ class Home extends Controller {
     }
 
     function index() {
-        log_message('debug', 'Data was posted from Gnip');
         if (stripos($_SERVER['REQUEST_METHOD'], 'HEAD') !== FALSE) {
+            log_message('debug', 'Data Missing');
             exit();
         } else {
+            log_message('debug', 'Data was posted from Gnip, attempting to process.');
             $xml = file_get_contents("php://input");
-            $this->addTweets($xml);
-            $status = $this->Gnipdata_model->insertBlock($xml);
+            if($xml == FALSE){
+                log_message('debug', 'There was no data to process, exiting.');
+                exit();
+            } else {
+                log_message('debug', 'Data was properly received, commence processing.');
+                $this->addTweets($xml);
+                $status = $this->Gnipdata_model->insertBlock($xml);
+            }
         }
     }
 

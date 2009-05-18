@@ -249,7 +249,7 @@
             <xs:enumeration value="to"/>
             <xs:enumeration value="regarding"/>
             <xs:enumeration value="source"/>
-
+            <xs:enumeration value="keyword"/>
         </xs:restriction>
     </xs:simpleType>
 
